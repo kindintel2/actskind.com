@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="images/aok-logo.png" />
+  <title>Acts of Kindness — Baltimore</title>
+  <meta name="description" content="Acts of Kindness is a Baltimore nonprofit sharing free resources and weekend activities for families, and giving children a platform through the Getting To Know Me kids' show." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      color-scheme: light dark;
+      --paper: #ffffff;
+      --paper-2: #f2f2f2;
+      --ink: #111111;
+      --muted: #5c5c5c;
+      --line: #d9d9d9;
+      --dark: #111111;
+      --black: #000000;
+      --red: #bc4024;
+      --red-deep: #9a331c;
+      --red-soft: #f6ded6;
+      --white: #ffffff;
+      --shadow: 0 22px 60px rgba(0, 0, 0, .12);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #111111;
+        --paper-2: #1c1c1c;
+        --ink: #f5f5f5;
+        --muted: #b0b0b0;
+        --line: #333333;
+        --dark: #f5f5f5;
+        --black: #ffffff;
+        --red: #e05a3a;
+        --red-deep: #ef6b47;
+        --red-soft: #3d1a12;
+        --white: #111111;
+        --shadow: 0 22px 60px rgba(0, 0, 0, .28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Work Sans", sans-serif;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    .page { overflow: clip; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav a {
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--red); }
+    .nav .nav-cta {
+      background: var(--red);
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 2px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: clamp(36px, 7vw, 100px);
+      align-items: end;
+      padding: clamp(72px, 11vw, 150px) 0 72px;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -68px;
+      top: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      box-shadow: 0 0 0 30px var(--paper), 0 0 0 31px var(--line);
+      z-index: -1;
+    }
+    .hero h1 {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(3.25rem, 8vw, 7.9rem);
+      line-height: .94;
+      letter-spacing: -.065em;
+      margin: 0;
+      max-width: 890px;
+    }
+    .hero h1 em { color: var(--red); font-style: italic; font-weight: 400; }
+    .hero-side { padding-bottom: 8px; }
+    .hero-side p { margin: 0 0 28px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.2rem); }
+    .hero-logo {
+      display: block;
+      width: min(220px, 60%);
+      height: auto;
+      margin-bottom: 28px;
+      border-radius: 4px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid var(--red);
+      border-radius: 2px;
+      background: var(--red);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .button:hover, .button:focus-visible { background: var(--red-deep); border-color: var(--red-deep); }
+    .button svg { width: 18px; height: 18px; }
+
+    .proof-strip {
+      background: var(--dark);
+      color: var(--white);
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 1px;
+      background: color-mix(in srgb, var(--white) 25%, transparent);
+    }
+    .proof-item { background: var(--dark); padding: 28px 30px 30px; }
+    .proof-item strong { display: block; font-family: "Libre Baskerville", serif; font-size: 1.35rem; margin-bottom: 4px; }
+    .proof-item span { color: color-mix(in srgb, var(--white) 72%, transparent); font-size: .92rem; }
+
+    section { padding: clamp(72px, 9vw, 118px) 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: .55fr 1.45fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 50px;
+    }
+    .section-number { color: var(--red); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .section-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: clamp(2.15rem, 4.8vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      margin: 0;
+      max-width: 850px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: clamp(44px, 8vw, 110px);
+      align-items: start;
+    }
+    .about-copy p { font-size: clamp(1.13rem, 2vw, 1.45rem); margin: 0 0 22px; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .fact-panel { background: var(--paper-2); padding: 34px; box-shadow: var(--shadow); }
+    .fact-panel h3 { font-family: "Libre Baskerville", serif; margin: 0 0 24px; font-size: 1.4rem; }
+    .fact { padding: 19px 0; border-top: 1px solid var(--line); }
+    .fact:last-child { padding-bottom: 0; }
+    .fact strong { display: block; font-size: 1.05rem; margin-bottom: 5px; }
+    .fact span { color: var(--muted); font-size: .92rem; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .gallery figure { margin: 0; }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .gallery figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .show-copy { max-width: 760px; margin: 0 0 44px; font-size: clamp(1.13rem, 2vw, 1.45rem); }
+
+    .services { border-bottom: 1px solid var(--line); }
+    .service-list { border-top: 1px solid var(--line); }
+    .service {
+      display: grid;
+      grid-template-columns: 80px minmax(210px, .8fr) 1.2fr;
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .service .num { color: var(--muted); font-size: .84rem; }
+    .service h3 { margin: 0; font-family: "Libre Baskerville", serif; font-size: clamp(1.2rem, 2vw, 1.7rem); }
+    .service p { margin: 0; color: var(--muted); max-width: 660px; }
+
+    .contact { background: var(--dark); color: var(--white); }
+    .contact .section-number { color: var(--red); }
+    .contact .section-title { color: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr);
+      gap: clamp(40px, 8vw, 100px);
+      align-items: start;
+    }
+    .contact-note { color: color-mix(in srgb, var(--white) 74%, transparent); margin: 0 0 26px; }
+    .contact-links { display: grid; gap: 14px; }
+    .social-link { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    .social-row { display: flex; gap: 28px; margin-top: 32px; }
+    .social-icon { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; color: var(--white); text-decoration: none; font-size: .8rem; font-weight: 600; }
+    .social-icon svg { width: 46px; height: 46px; border: 1px solid color-mix(in srgb, var(--white) 45%, transparent); border-radius: 50%; padding: 11px; }
+    .social-icon:hover svg, .social-icon:focus-visible svg { border-color: var(--red); }
+    .social-icon--soon { opacity: .7; }
+
+    footer { background: var(--black); color: var(--white); }
+    .footer-inner { min-height: 86px; display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: .84rem; color: color-mix(in srgb, var(--white) 70%, transparent); }
+    .footer-inner a { color: var(--white); }
+    .footer-note { padding: 0 0 28px; font-size: .84rem; color: color-mix(in srgb, var(--white) 70%, transparent); }
+
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 620px); }
+      .nav { justify-content: space-between; gap: 14px; min-height: 66px; }
+      .nav a:not(.nav-cta) { font-size: .8rem; }
+      .hero { grid-template-columns: 1fr; padding: 58px 0 56px; gap: 34px; }
+      .hero h1 { font-size: clamp(3.2rem, 16vw, 5.8rem); }
+      .hero::after { right: -115px; top: 22px; }
+      .proof-grid, .section-head, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .proof-item { padding: 22px 20px; }
+      .section-head { gap: 13px; margin-bottom: 36px; }
+      .service { grid-template-columns: 42px 1fr; gap: 16px; align-items: start; }
+      .service p { grid-column: 2; }
+      .fact-panel { padding: 26px 22px; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img { height: 280px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; padding: 24px 0; }
+    }
+
+    @media (max-width: 430px) {
+      .nav a[href="#about"] { display: none; }
+      .nav { gap: 10px; }
+      .nav .nav-cta { padding: 9px 12px; }
+      .hero h1 { font-size: 3.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="wrap">
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#show">Kids&rsquo; Show</a>
+        <a href="#resources">Resources</a>
+        <a class="nav-cta" href="#contact">Get in touch</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <section class="hero" aria-labelledby="hero-title">
+          <h1 id="hero-title">Small acts. <em>Big kindness.</em></h1>
+          <div class="hero-side">
+            <img class="hero-logo" src="images/aok-logo.png" alt="Acts of Kindness logo" />
+            <p>Acts of Kindness is a Baltimore nonprofit sharing free resources and weekend activities for families, and giving children a platform through the Getting To Know Me kids&rsquo; show.</p>
+            <a class="button" href="#contact">Get in touch
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div class="proof-strip">
+        <div class="wrap proof-grid">
+          <div class="proof-item"><strong>A Baltimore nonprofit</strong><span>A 501(c)(3) serving families across the city</span></div>
+          <div class="proof-item"><strong>Free resources, every week</strong><span>Family activities and community resources, shared weekly</span></div>
+          <div class="proof-item"><strong>Kids with a platform</strong><span>The Getting To Know Me kids&rsquo; show, hosted by the Kindness Crew</span></div>
+        </div>
+      </div>
+
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Kindness, shared across Baltimore.</h2>
+          </div>
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>Acts of Kindness is a nonprofit based in Baltimore. We share free resources and weekend activities for families, so parents and caregivers can find something good to do with their children without it costing anything.</p>
+              <p>We also give children a platform of their own. Through the Getting To Know Me kids&rsquo; show, the Kindness Crew hosts, records, and shares their own thoughts and ideas with the community.</p>
+            </div>
+            <aside class="fact-panel" aria-label="About Acts of Kindness">
+              <h3>About us</h3>
+              <div class="fact"><strong>Who we are</strong><span>A Baltimore nonprofit, recognized as a 501(c)(3).</span></div>
+              <div class="fact"><strong>What we do</strong><span>Free family resources, weekend activities, and a kids&rsquo; show made by children.</span></div>
+              <div class="fact"><strong>Where to find us</strong><span>Online at actskind.com and on Facebook.</span></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="services" id="show">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Getting To Know Me, with the Kindness Crew.</h2>
+          </div>
+          <p class="show-copy">Getting To Know Me is a kids&rsquo; show hosted by the Kindness Crew. The children host, co-host, film, and share their own ideas, from taste tests to days out around Baltimore.</p>
+          <div class="gallery">
+            <figure><img src="images/aok-pic-01-ice-rink.jpg" alt="The Kindness Crew at the Inner Harbor ice rink" /><figcaption>The Kindness Crew at the Inner Harbor ice rink</figcaption></figure>
+            <figure><img src="images/aok-pic-02-port-of-baltimore.jpg" alt="The Kindness Crew at the Port of Baltimore" /><figcaption>The Kindness Crew at the Port of Baltimore</figcaption></figure>
+            <figure><img src="images/aok-pic-03-hallway.jpg" alt="The Kindness Crew out and about in Baltimore" /><figcaption>The Kindness Crew out and about in Baltimore</figcaption></figure>
+            <figure><img src="images/aok-pic-04-restaurant-patio.jpg" alt="The Kindness Crew sharing a meal out" /><figcaption>The Kindness Crew sharing a meal out</figcaption></figure>
+            <figure><img src="images/aok-pic-05-freedom-wall.jpg" alt="The Kindness Crew at a community exhibit" /><figcaption>The Kindness Crew at a community exhibit</figcaption></figure>
+            <figure><img src="images/aok-pic-06-abolition-exhibit.jpg" alt="A Baltimore museum exhibit on abolition" /><figcaption>A Baltimore museum exhibit on abolition</figcaption></figure>
+            <figure><img src="images/aok-pic-07-hersheypark.jpg" alt="The Kindness Crew on a day trip to Hersheypark" /><figcaption>The Kindness Crew on a day trip to Hersheypark</figcaption></figure>
+            <figure><img src="images/aok-pic-08-outdoor-market.jpg" alt="The Kindness Crew at an outdoor market" /><figcaption>The Kindness Crew at an outdoor market</figcaption></figure>
+            <figure><img src="images/aok-pic-09-crane.jpg" alt="A Baltimore industrial crane under a blue sky" /><figcaption>A Baltimore landmark under a blue sky</figcaption></figure>
+            <figure><img src="images/aok-pic-10-collage.jpg" alt="The Kindness Crew: days out, games, and recording together" /><figcaption>The Kindness Crew: days out, games, and recording together</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="services" id="resources">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Free resources for Baltimore families.</h2>
+          </div>
+          <div class="service-list">
+            <article class="service"><span class="num">01</span><h3>Weekly resource posts</h3><p>Free resources for Baltimore families, shared each week on our Facebook page.</p></article>
+            <article class="service"><span class="num">02</span><h3>Weekend roundups</h3><p>A roundup of family-friendly weekend activities around Baltimore, so families can plan something good to do together.</p></article>
+            <article class="service"><span class="num">03</span><h3>Community events</h3><p>Seasonal happenings and local events worth knowing about, gathered in one place.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Say hello. We&rsquo;d love to hear from you.</h2>
+          </div>
+          <div class="contact-grid">
+            <div>
+              <p class="contact-note">Questions about our resources, the kids&rsquo; show, or how to take part? Send us an email and we will get back to you.</p>
+              <div class="contact-links">
+                <a class="social-link" href="mailto:kandice@actskind.com">kandice@actskind.com</a>
+                <a class="social-link" href="mailto:support@actskind.com">support@actskind.com</a>
+              </div>
+              <div class="social-row" aria-label="Find Acts of Kindness on social media">
+                <a class="social-icon" href="https://www.facebook.com/Aokcommunitytech" target="_blank" rel="noopener" aria-label="Acts of Kindness on Facebook">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-family="Work Sans, sans-serif" font-size="15" font-weight="700" fill="currentColor">f</text></svg>
+                  <span>Facebook</span>
+                </a>
+                <a class="social-icon" href="https://www.youtube.com/channel/UCiyZRlRe98au7zCszJUBFUA" target="_blank" rel="noopener" aria-label="Acts of Kindness on YouTube">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg>
+                  <span>YouTube</span>
+                </a>
+                <a class="social-icon" href="https://www.instagram.com/kandice23103" target="_blank" rel="noopener" aria-label="Acts of Kindness on Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+                  <span>Instagram</span>
+                </a>
+                <a class="social-icon" href="https://www.tiktok.com/@Aokbmore" target="_blank" rel="noopener" aria-label="Acts of Kindness on TikTok">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-family="Work Sans, sans-serif" font-size="15" font-weight="700" fill="currentColor">&#9834;</text></svg>
+                  <span>TikTok</span>
+                </a>
+              </div>
+            </div>
+            <div>
+              <p class="contact-note">You can also find Acts of Kindness on Facebook, where we share our weekly resources and weekend roundups.</p>
+              <p class="contact-note">Acts of Kindness &middot; 400 E. Pratt St, 8th Floor, Baltimore, MD 21202 &middot; actskind.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-inner">
+        <span>Acts of Kindness &middot; 400 E. Pratt St, 8th Floor, Baltimore, MD 21202</span>
+        <a href="#about">Back to top</a>
+      </div>
+      <div class="wrap footer-note">Acts of Kindness Inc. is a 501(c)(3) nonprofit organization. EIN: 33-2813183. Donations are tax-deductible to the extent allowed by law.</div>
+    </footer>
+  </div>
+</body>
+</html>
